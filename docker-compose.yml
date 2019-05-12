@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  web:
+    build: ./docker/config/nginx/
+    image: testing_seminar_webserver_image
+    container_name: testing_seminar_webserver_image
+    ports:
+      - 8001:80
+    volumes:
+      - .:/var/www/html
+    networks:
+      - testing_seminar_app_internal
+
+  app:
+    build: ./docker/config/php
+    image: testing_seminar_app_image
+    container_name: testing_seminar_app_image
+    volumes:
+      - .:/var/www/html
+    networks:
+      - testing_seminar_app_internal
+
+networks:
+  testing_seminar_app_internal:
+    driver: bridge

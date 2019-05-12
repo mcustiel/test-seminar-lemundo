@@ -1,11 +1,12 @@
 <?php
+
 namespace Lemundo\Translator;
 
+use Lemundo\Translator\Persistence\Pdo\PdoConnection;
 use Lemundo\Translator\Ui\Router\RequestDispatcher;
+use Zend\Diactoros\Response;
 use Zend\Diactoros\ServerRequestFactory;
 use Zend\HttpHandlerRunner\Emitter\SapiEmitter;
-use Zend\Diactoros\Response;
-use Lemundo\Translator\Persistence\Pdo\PdoConnection;
 
 class Application
 {

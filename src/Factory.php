@@ -2,15 +2,15 @@
 
 namespace Lemundo\Translator;
 
+use FastRoute\Dispatcher;
 use Lemundo\Translator\Persistence\Pdo\PdoConnection;
 use Lemundo\Translator\Persistence\Pdo\PdoTranslations;
 use Lemundo\Translator\Persistence\Translations;
-use Lemundo\Translator\Ui\Router\RequestDispatcher;
-use Lemundo\Translator\Ui\Router\Implementation\FastRouterHandler;
-use Lemundo\Translator\Ui\Router\ControllerLocator;
-use Lemundo\Translator\Ui\Controllers\TranslationsController;
 use Lemundo\Translator\Ui\Controllers\LocalesController;
-use FastRoute\Dispatcher;
+use Lemundo\Translator\Ui\Controllers\TranslationsController;
+use Lemundo\Translator\Ui\Router\ControllerLocator;
+use Lemundo\Translator\Ui\Router\Implementation\FastRouterHandler;
+use Lemundo\Translator\Ui\Router\RequestDispatcher;
 
 class Factory
 {
@@ -30,6 +30,7 @@ class Factory
         if ($this->dbConnection === null) {
             $this->dbConnection = new PdoConnection($this->config->getDatabaseConnectionDsn());
         }
+
         return $this->dbConnection;
     }
 

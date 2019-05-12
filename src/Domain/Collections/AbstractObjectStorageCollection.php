@@ -1,9 +1,10 @@
 <?php
+
 namespace Lemundo\Translator\Domain\Collections;
 
-use SplObjectStorage;
 use Countable;
 use Iterator;
+use SplObjectStorage;
 
 abstract class AbstractObjectStorageCollection implements Iterator, Countable
 {

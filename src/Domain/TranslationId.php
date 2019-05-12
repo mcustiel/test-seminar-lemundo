@@ -43,7 +43,7 @@ class TranslationId
 
     private function ensureLength(string $string): void
     {
-        $length = strlen($string);
+        $length = \strlen($string);
         if ($length < self::MIN_LENGTH || $length > self::MAX_LENGTH) {
             throw new InvalidArgumentException(
                 sprintf(

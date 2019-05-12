@@ -23,6 +23,7 @@ class PdoResultIterator
     {
         $row = $this->currentValue;
         $this->currentValue = $this->result->fetch(PDO::FETCH_ASSOC);
+
         return $row;
     }
 
@@ -32,6 +33,7 @@ class PdoResultIterator
         if (!$hasNext) {
             $this->result->closeCursor();
         }
+
         return $hasNext;
     }
 }

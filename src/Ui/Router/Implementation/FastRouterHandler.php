@@ -4,12 +4,14 @@ namespace Lemundo\Translator\Ui\Router\Implementation;
 
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
-use Psr\Http\Message\ServerRequestInterface;
-use Zend\Diactoros\Response;
-use Psr\Http\Message\ResponseInterface;
-use Lemundo\Translator\Ui\Router\{RoutesEnum, RequestDispatcher, ControllerLocator};
-use RuntimeException;
 use Lemundo\Translator\Ui\Controllers\Controller;
+use Lemundo\Translator\Ui\Router\ControllerLocator;
+use Lemundo\Translator\Ui\Router\RequestDispatcher;
+use Lemundo\Translator\Ui\Router\RoutesEnum;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use RuntimeException;
+use Zend\Diactoros\Response;
 
 class FastRouterHandler implements RequestDispatcher
 {
@@ -24,7 +26,7 @@ class FastRouterHandler implements RequestDispatcher
         $this->dispatcher = $dispatcher;
     }
 
-    public static function createDispatcherCallable () : callable
+    public static function createDispatcherCallable(): callable
     {
         return function (RouteCollector $collector) {
             $collector->addRoute('POST', '/locale/{locale}/translation', RoutesEnum::ADD_TRANSLATION);
@@ -42,6 +44,7 @@ class FastRouterHandler implements RequestDispatcher
         switch ($routeInfo[0]) {
             case Dispatcher::NOT_FOUND:
                 $response = (new Response())->withStatus(404);
+
                 return $response;
             case Dispatcher::METHOD_NOT_ALLOWED:
                 return new Response(
@@ -55,7 +58,6 @@ class FastRouterHandler implements RequestDispatcher
                 break;
             case Dispatcher::FOUND:
                 return $this->execiteRequestInController($routeInfo, $request);
-
             default:
                 $response = (new Response())->withStatus(500);
         }
@@ -68,6 +70,7 @@ class FastRouterHandler implements RequestDispatcher
         $route = new RoutesEnum($routeInfo[1]);
         $controller = $this->controllerLocator->locate($route->getController());
         $this->ensureMethodExists($route, $controller);
+
         return $controller->{$route->getMethod()}(
             $request,
             isset($routeInfo[2]) ? $routeInfo[2] : []

@@ -35,7 +35,7 @@ class PdoConnection
             'INSERT INTO %s (%s) VALUES (%s)',
             $table,
             implode(self::FIELD_SEPARATOR, array_keys($values)),
-            rtrim(str_repeat('?,', count($values)), self::FIELD_SEPARATOR)
+            rtrim(str_repeat('?,', \count($values)), self::FIELD_SEPARATOR)
         );
         $statement = $this->database->prepare($query);
         $statement->execute(array_values($values));
@@ -51,6 +51,7 @@ class PdoConnection
             throw new RuntimeException('No rows found');
         }
         $statement->closeCursor();
+
         return $return;
     }
 

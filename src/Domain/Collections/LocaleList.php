@@ -1,4 +1,5 @@
 <?php
+
 namespace Lemundo\Translator\Domain\Collections;
 
 use Lemundo\Translator\Domain\Locale;

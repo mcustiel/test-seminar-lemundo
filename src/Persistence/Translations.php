@@ -2,8 +2,10 @@
 
 namespace Lemundo\Translator\Persistence;
 
-use Lemundo\Translator\Domain\{TranslationId, Text, Locale};
 use Lemundo\Translator\Domain\Collections\TranslationIdTextMap;
+use Lemundo\Translator\Domain\Locale;
+use Lemundo\Translator\Domain\Text;
+use Lemundo\Translator\Domain\TranslationId;
 
 interface Translations
 {

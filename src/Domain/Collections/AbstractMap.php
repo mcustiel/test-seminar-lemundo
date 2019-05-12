@@ -1,4 +1,5 @@
 <?php
+
 namespace Lemundo\Translator\Domain\Collections;
 
 abstract class AbstractMap extends AbstractObjectStorageCollection

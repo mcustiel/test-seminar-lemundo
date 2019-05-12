@@ -27,7 +27,7 @@ class Locale
         $this->locale = $locale;
     }
 
-    public static function getLocales() : array
+    public static function getLocales(): array
     {
         return self::VALID_LOCALES;
     }
@@ -39,7 +39,7 @@ class Locale
 
     private function ensureValidLocale(string $locale): void
     {
-        if (!in_array($locale, self::VALID_LOCALES)) {
+        if (!\in_array($locale, self::VALID_LOCALES, true)) {
             throw new InvalidArgumentException(sprintf('Invalid locale: %s', $locale));
         }
     }

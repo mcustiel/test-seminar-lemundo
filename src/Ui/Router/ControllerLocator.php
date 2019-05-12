@@ -1,9 +1,10 @@
 <?php
+
 namespace Lemundo\Translator\Ui\Router;
 
-use Lemundo\Translator\Ui\Controllers\TranslationsController;
-use Lemundo\Translator\Ui\Controllers\LocalesController;
 use Lemundo\Translator\Ui\Controllers\Controller;
+use Lemundo\Translator\Ui\Controllers\LocalesController;
+use Lemundo\Translator\Ui\Controllers\TranslationsController;
 
 class ControllerLocator
 {
@@ -14,19 +15,20 @@ class ControllerLocator
         TranslationsController $translationsController,
         LocalesController $localesController
     ) {
-       $this->controllers = [
+        $this->controllers = [
             'translations' => $translationsController,
-            'locales' => $localesController
+            'locales'      => $localesController,
        ];
     }
 
     public function locate(string $controller): Controller
     {
-        if (!array_key_exists($controller, $this->controllers)) {
+        if (!\array_key_exists($controller, $this->controllers)) {
             throw new \InvalidArgumentException(
                 sprintf('Invalid controller identifier: %s', $controller)
             );
         }
+
         return $this->controllers[$controller];
     }
 }

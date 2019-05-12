@@ -2,8 +2,10 @@
 
 namespace Lemundo\Translator\Persistence\Pdo;
 
-use Lemundo\Translator\Domain\{TranslationId, Text, Locale};
 use Lemundo\Translator\Domain\Collections\TranslationIdTextMap;
+use Lemundo\Translator\Domain\Locale;
+use Lemundo\Translator\Domain\Text;
+use Lemundo\Translator\Domain\TranslationId;
 use Lemundo\Translator\Persistence\Translations;
 
 class PdoTranslations implements Translations
@@ -22,8 +24,8 @@ class PdoTranslations implements Translations
             'translations',
             [
                 'translation_id' => $translationId->asString(),
-                'locale' => $locale->asString(),
-                'text' => $text->asString(),
+                'locale'         => $locale->asString(),
+                'text'           => $text->asString(),
             ]
         );
     }
@@ -37,6 +39,7 @@ class PdoTranslations implements Translations
                 $locale->asString(),
             ]
         );
+
         return new Text($row['text']);
     }
 
@@ -54,6 +57,7 @@ class PdoTranslations implements Translations
                 new Text($row['text'])
             );
         }
+
         return $translations;
     }
 }

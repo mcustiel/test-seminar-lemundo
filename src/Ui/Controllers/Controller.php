@@ -18,6 +18,7 @@ abstract class Controller
 
     /**
      * @param mixed $data
+     *
      * @return ResponseInterface
      */
     public function createJsonResponse($data, int $status = 200): ResponseInterface
@@ -26,6 +27,7 @@ abstract class Controller
             ->withStatus($status)
             ->withHeader('Content-Type', 'application/json');
         $response->getBody()->write(json_encode($data));
+
         return $response;
     }
 

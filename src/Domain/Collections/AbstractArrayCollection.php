@@ -1,4 +1,5 @@
 <?php
+
 namespace Lemundo\Translator\Domain\Collections;
 
 use Countable;
@@ -26,7 +27,7 @@ abstract class AbstractArrayCollection implements Iterator, Countable
 
     public function key()
     {
-        key($this->data) ;
+        key($this->data);
     }
 
     public function valid(): bool
@@ -46,7 +47,6 @@ abstract class AbstractArrayCollection implements Iterator, Countable
 
     public function count(): int
     {
-        return count($this->data);
+        return \count($this->data);
     }
-
 }

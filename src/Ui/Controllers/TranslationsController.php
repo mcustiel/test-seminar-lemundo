@@ -2,12 +2,12 @@
 
 namespace Lemundo\Translator\Ui\Controllers;
 
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\ResponseInterface;
 use Lemundo\Translator\Domain\Locale;
-use Zend\Diactoros\Response;
-use Lemundo\Translator\Domain\TranslationId;
 use Lemundo\Translator\Domain\Text;
+use Lemundo\Translator\Domain\TranslationId;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Zend\Diactoros\Response;
 
 class TranslationsController extends Controller
 {
@@ -22,6 +22,7 @@ class TranslationsController extends Controller
         foreach ($map as $translationId => $text) {
             $responseMap[$translationId->asString()] = $text->asString();
         }
+
         return $this->createJsonResponse($responseMap);
     }
 
@@ -42,15 +43,16 @@ class TranslationsController extends Controller
 
             return $this->createJsonResponse(
                     [
-                        'id' => $translationId->asString(),
+                        'id'     => $translationId->asString(),
                         'locale' => $locale->asString(),
-                        'text' => $text->asString(),
+                        'text'   => $text->asString(),
                     ],
                 201
             );
         } catch (\RuntimeException $e) {
             $response = (new Response())->withStatus(500);
             $response->getBody()->write($e->__toString());
+
             return $response;
         }
     }

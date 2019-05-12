@@ -1,4 +1,5 @@
 <?php
+
 namespace Lemundo\Translator\Ui\Router;
 
 use InvalidArgumentException;
@@ -43,7 +44,7 @@ class RoutesEnum
 
     private function ensureIsValidRoute(string $route): void
     {
-        if (!in_array($route, self::VALID_ROUTES)) {
+        if (!\in_array($route, self::VALID_ROUTES, true)) {
             throw new InvalidArgumentException(
                 sprintf(
                     'Invalid route: %s. Must be one of [%s]',

@@ -44,10 +44,9 @@ class FastRouterHandler implements RequestDispatcher
         switch ($routeInfo[0]) {
             case Dispatcher::NOT_FOUND:
                 $response = (new Response())->withStatus(404);
-
-                return $response;
+                break;
             case Dispatcher::METHOD_NOT_ALLOWED:
-                return new Response(
+                $response = new Response(
                     sprintf(
                         'Method not allowed. Allowed methods for %s: %s',
                         $uri,
@@ -57,10 +56,12 @@ class FastRouterHandler implements RequestDispatcher
                 );
                 break;
             case Dispatcher::FOUND:
-                return $this->execiteRequestInController($routeInfo, $request);
+                $response = $this->execiteRequestInController($routeInfo, $request);
+                break;
             default:
                 $response = (new Response())->withStatus(500);
         }
+        return $response;
     }
 
     private function execiteRequestInController(

@@ -6,6 +6,7 @@ use Lemundo\Translator\Domain\Collections\TranslationIdTextMap;
 use Lemundo\Translator\Domain\Locale;
 use Lemundo\Translator\Domain\Text;
 use Lemundo\Translator\Domain\TranslationId;
+use Lemundo\Translator\Persistence\Exception\DuplicatedException;
 use Lemundo\Translator\Persistence\Translations;
 
 class PdoTranslations implements Translations
@@ -18,16 +19,29 @@ class PdoTranslations implements Translations
         $this->connection = $connection;
     }
 
-    public function add(TranslationId $translationId, Locale $locale, Text $text): void
+    public function set(TranslationId $translationId, Locale $locale, Text $text): void
     {
-        $this->connection->insert(
-            'translations',
-            [
-                'translation_id' => $translationId->asString(),
-                'locale'         => $locale->asString(),
-                'text'           => $text->asString(),
-            ]
-        );
+        try {
+            $this->connection->insert(
+                'translations',
+                [
+                    'translation_id' => $translationId->asString(),
+                    'locale'         => $locale->asString(),
+                    'text'           => $text->asString(),
+                ]
+            );
+        } catch (DuplicatedException $e) {
+            $this->connection->update(
+                'translations',
+                [
+                    'translation_id' => $translationId->asString(),
+                    'locale'         => $locale->asString(),
+                    'text'           => $text->asString(),
+                ],
+                'translation_id = ? and locale = ?',
+                [$translationId->asString(), $locale->asString()]
+            );
+        }
     }
 
     public function get(TranslationId $translationId, Locale $locale): Text
@@ -59,5 +73,14 @@ class PdoTranslations implements Translations
         }
 
         return $translations;
+    }
+
+    public function delete(TranslationId $translationId, Locale $locale): void
+    {
+        $this->connection->delete(
+            'translations',
+            'translation_id = ? and locale = ?',
+            [$translationId->asString(), $locale->asString()]
+        );
     }
 }

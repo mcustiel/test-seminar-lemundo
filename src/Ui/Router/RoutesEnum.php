@@ -6,16 +6,18 @@ use InvalidArgumentException;
 
 class RoutesEnum
 {
-    public const ADD_TRANSLATION = 'translations::add';
+    public const SET_TRANSLATION = 'translations::set';
     public const GET_TRANSLATION = 'translations::get';
+    public const DELETE_TRANSLATION = 'translations::delete';
     public const LIST_TRANSLATIONS = 'translations::list';
     public const LIST_LOCALES = 'locales::list';
 
     private const ROUTE_SEPARATOR = '::';
 
     private const VALID_ROUTES = [
-        self::ADD_TRANSLATION,
+        self::SET_TRANSLATION,
         self::GET_TRANSLATION,
+        self::DELETE_TRANSLATION,
         self::LIST_TRANSLATIONS,
         self::LIST_LOCALES,
     ];

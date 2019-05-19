@@ -29,9 +29,10 @@ class FastRouterHandler implements RequestDispatcher
     public static function createDispatcherCallable(): callable
     {
         return function (RouteCollector $collector) {
-            $collector->addRoute('POST', '/locale/{locale}/translation', RoutesEnum::ADD_TRANSLATION);
+            $collector->addRoute('PUT', '/locale/{locale}/translation', RoutesEnum::SET_TRANSLATION);
             $collector->addRoute('GET', '/locale/{locale}/translation', RoutesEnum::LIST_TRANSLATIONS);
             $collector->addRoute('GET', '/locale/{locale}/translation/{translationId}', RoutesEnum::GET_TRANSLATION);
+            $collector->addRoute('DELETE', '/locale/{locale}/translation/{translationId}', RoutesEnum::DELETE_TRANSLATION);
             $collector->addRoute('GET', '/locale', RoutesEnum::LIST_LOCALES);
         };
     }
@@ -61,6 +62,7 @@ class FastRouterHandler implements RequestDispatcher
             default:
                 $response = (new Response())->withStatus(500);
         }
+
         return $response;
     }
 

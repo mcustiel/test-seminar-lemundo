@@ -8,6 +8,16 @@ actor: AcceptanceTester
 modules:
     enabled:
         - PhpBrowser:
-            url: http://localhost:8001
+            url: http://localhost:8080
+        - REST:
+           depends: PhpBrowser
+           url: 'http://localhost:8080'
         - \Helper\Acceptance
+        - Db:
+            dsn: 'sqlite:../var/data/acceptance.sqlite'
+            user: ~
+            password: ~
+            dump: tests/_data/install.sql
+            cleanup: true
+            populate: true
     step_decorators: ~        

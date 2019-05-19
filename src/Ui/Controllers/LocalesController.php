@@ -10,8 +10,10 @@ class LocalesController extends Controller
 {
     public function list(ServerRequestInterface $request, array $arguments): ResponseInterface
     {
-        var_export('tomato');
-
-        return $this->createJsonResponse(Locale::getLocales());
+        try {
+            return $this->createJsonResponse(Locale::getLocales());
+        } catch (\Exception $e) {
+            return $this->createJsonResponseFromException($e);
+        }
     }
 }

@@ -8,3 +8,8 @@ actor_suffix: Tester
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
+        - Lemundo\Codeception\Extensions\TestHelper
+settings:
+    bootstrap: _bootstrap.php
+    colors: true
+    memory_limit: 128M

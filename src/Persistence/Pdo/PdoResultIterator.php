@@ -21,6 +21,8 @@ class PdoResultIterator
 
     public function next(): array
     {
+        $this->ensureHasNext();
+
         $row = $this->currentValue;
         $this->currentValue = $this->result->fetch(PDO::FETCH_ASSOC);
 
@@ -35,5 +37,12 @@ class PdoResultIterator
         }
 
         return $hasNext;
+    }
+
+    private function ensureHasNext()
+    {
+        if ($this->currentValue === false) {
+            throw new \OverflowException('No more results');
+        }
     }
 }

@@ -9,9 +9,11 @@ use Lemundo\Translator\Domain\TranslationId;
 
 interface Translations
 {
-    public function add(TranslationId $translationId, Locale $locale, Text $text): void;
+    public function set(TranslationId $translationId, Locale $locale, Text $text): void;
 
     public function get(TranslationId $translationId, Locale $locale): Text;
 
     public function getTranslations(Locale $locale): TranslationIdTextMap;
+
+    public function delete(TranslationId $translationId, Locale $locale): void;
 }

@@ -87,11 +87,11 @@ This is a dummy project for the automated testing seminar at Lemundo
 All constraints violations must cause the application to return 400 error.
 
 * Translation Id
- * Not empty
- * Min length = 3
- * Max length = 32
- * Alphanumeric string
+    * Not empty
+    * Min length = 3
+    * Max length = 32
+    * Alphanumeric string
 * Translation text
- * Not empty
+    * Not empty
 * Locale
- * Must be one of: `de_DE, de_CH, de_AT, en_GB` 
+    * Must be one of: `de_DE, de_CH, de_AT, en_GB` 

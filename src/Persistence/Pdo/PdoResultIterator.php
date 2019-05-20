@@ -39,7 +39,7 @@ class PdoResultIterator
         return $hasNext;
     }
 
-    private function ensureHasNext()
+    private function ensureHasNext(): void
     {
         if ($this->currentValue === false) {
             throw new \OverflowException('No more results');

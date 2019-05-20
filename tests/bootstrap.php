@@ -1,4 +1,4 @@
 <?php
 
-const BASE_PATH = __DIR__ . '/..';
-require_once BASE_PATH . '/vendor/autoload.php';
+const APP_PATH = __DIR__ . '/..';
+require_once APP_PATH . '/vendor/autoload.php';

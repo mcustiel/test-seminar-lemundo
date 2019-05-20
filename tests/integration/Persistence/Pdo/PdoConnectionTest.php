@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class PdoConnectionTest extends TestCase
 {
-    const DB_FILE = BASE_PATH . '/var/data/phpunit.sqlite';
+    const DB_FILE = APP_PATH . '/var/data/phpunit.sqlite';
 
     /** @var string */
     private static $dsn;

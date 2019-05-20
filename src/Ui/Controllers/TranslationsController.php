@@ -123,7 +123,7 @@ class TranslationsController extends Controller
         return $translationData;
     }
 
-    private function validateJson(array $translationData)
+    private function validateJson(array $translationData): void
     {
         $expected = ['id', 'text'];
         $received = array_keys($translationData);

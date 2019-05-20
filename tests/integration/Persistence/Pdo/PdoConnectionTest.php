@@ -4,6 +4,7 @@ namespace Lemundo\Translator\Tests\Persistence\Pdo;
 
 use Lemundo\Translator\Persistence\Pdo\PdoConnection;
 use PDO;
+use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 
 class PdoConnectionTest extends TestCase
@@ -49,7 +50,7 @@ class PdoConnectionTest extends TestCase
         $this->connection->connect();
         $this->connection->insert('test', ['id' => 1, 'value' => 'potato']);
         $res = self::$pdoHelper->query('SELECT id, value FROM test', PDO::FETCH_ASSOC);
-        $this->assertSame([['id' => '1', 'value' => 'potato']], $res->fetchAll());
+        Assert::assertSame([['id' => '1', 'value' => 'potato']], $res->fetchAll());
         $this->connection->disconnect();
     }
 }

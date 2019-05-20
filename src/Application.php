@@ -21,7 +21,7 @@ class Application
         $this->pdoConnection = $pdoConnection;
     }
 
-    public function run()
+    public function run(): void
     {
         $request = ServerRequestFactory::fromGlobals(
             $_SERVER,

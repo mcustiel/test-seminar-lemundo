@@ -2,4 +2,5 @@
 
 docker-compose build
 docker-compose up -d
+./docker/bin/composer install
 ./docker/bin/install

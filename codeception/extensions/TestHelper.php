@@ -20,7 +20,6 @@ class TestHelper extends \Codeception\Extension
         $this->writeln('Starting PHP server');
         rename(APP_PATH . '/.env', APP_PATH . '/.env.backup');
         copy(APP_PATH . '/.env.acceptance', APP_PATH . '/.env');
-        touch(APP_PATH . '/var/data/acceptance.sqlite');
 
         $commandLine = [
             'php',
@@ -30,9 +29,9 @@ class TestHelper extends \Codeception\Extension
             APP_PATH . '/public',
             APP_PATH . '/codeception/router.php'
         ];
-        $this->app = new Process($commandLine);
-        $this->writeln($this->app->getCommandLine());
-        $this->app->start();
+        $this->application = new Process($commandLine);
+        $this->writeln($this->application->getCommandLine());
+        $this->application->start();
         sleep(1);
     }
 
@@ -45,9 +44,9 @@ class TestHelper extends \Codeception\Extension
         if (file_exists(APP_PATH . '/var/data/acceptance.sqlite')) {
             unlink(APP_PATH . '/var/data/acceptance.sqlite');
         }
-        if (!$this->app->isRunning()) {
+        if (!$this->application->isRunning()) {
             return;
         }
-        $this->app->stop(3);
+        $this->application->stop(3);
     }
 }

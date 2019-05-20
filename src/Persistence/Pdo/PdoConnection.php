@@ -24,7 +24,7 @@ class PdoConnection
         $this->dsn = $dsn;
     }
 
-    public function connect()
+    public function connect(): void
     {
         if ($this->database !== null) {
             throw new AlreadyConnectedException('There is already a database connection in place');
@@ -123,7 +123,7 @@ class PdoConnection
         return sprintf('UPDATE %s SET %s WHERE %s', $table, rtrim($sets, self::FIELD_SEPARATOR), $condition);
     }
 
-    private function ensureConnectedToDb()
+    private function ensureConnectedToDb(): void
     {
         if ($this->database === null) {
             throw new DisconnectedException('Trying to query. But not connected to DB.');

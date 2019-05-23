@@ -14,7 +14,7 @@ class PdoConnection
     private const FIELD_SEPARATOR = ',';
     private const DUPLICATED_UNIQUE_ERROR = '23000';
 
-    /** @var PDO */
+    /** @var ?PDO */
     private $database;
     /** @var string */
     private $dsn;

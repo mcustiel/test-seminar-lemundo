@@ -84,9 +84,11 @@ class FastRouterHandler implements RequestDispatcher
     {
         if (!method_exists($controller, $route->getMethod())) {
             throw new RuntimeException(
-                'Invalid route method: %s for controller %s',
-                $route->getMethod(),
-                $route->getController()
+                sprintf(
+                    'Invalid route method: %s for controller %s',
+                    $route->getMethod(),
+                    $route->getController()
+                )
             );
         }
     }

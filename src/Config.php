@@ -24,6 +24,6 @@ class Config
 
     public function getCachePath(): string
     {
-        return BASE_PATH . \DIRECTORY_SEPARATOR . $this->config['cachePath'];
+        return $this->config['basePath'] . \DIRECTORY_SEPARATOR . $this->config['cachePath'];
     }
 }

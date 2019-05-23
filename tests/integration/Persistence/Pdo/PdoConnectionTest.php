@@ -17,7 +17,7 @@ class PdoConnectionTest extends TestCase
     /** @var PdoConnection */
     private $connection;
 
-    /** @var PDO */
+    /** @var ?PDO */
     private static $pdoHelper;
 
     public static function setUpBeforeClass(): void

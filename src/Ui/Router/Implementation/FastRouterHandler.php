@@ -57,7 +57,7 @@ class FastRouterHandler implements RequestDispatcher
                 );
                 break;
             case Dispatcher::FOUND:
-                $response = $this->execiteRequestInController($routeInfo, $request);
+                $response = $this->executeRequestInController($routeInfo, $request);
                 break;
             default:
                 $response = (new Response())->withStatus(500);
@@ -66,7 +66,7 @@ class FastRouterHandler implements RequestDispatcher
         return $response;
     }
 
-    private function execiteRequestInController(
+    private function executeRequestInController(
         array $routeInfo,
         ServerRequestInterface $request
     ): ResponseInterface {

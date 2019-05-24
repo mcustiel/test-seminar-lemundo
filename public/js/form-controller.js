@@ -64,6 +64,8 @@ let SetTranslationFormController = (function() {
                     result.error = e;
                 }
                 submitListener(result);
+                event.stopPropagation()
+                return false;
             },
 
             constructor = function () {

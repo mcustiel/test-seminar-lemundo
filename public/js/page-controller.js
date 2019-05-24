@@ -27,7 +27,6 @@ let SetTranslationPageController = function(formController, messageController, a
                 );
             }
             setTimeout(messageController.hideMessage, 5000);
-            return false;
         };
 
     this.init = function() {

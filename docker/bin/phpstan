@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "RUNNING: 'vendor/bin/phpstan $@'"
+docker-compose exec app ./vendor/bin/phpstan $@
+

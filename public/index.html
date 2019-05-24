@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<title>Set translation values</title>
+		<style type="text/css">
+			* {
+				font-family: Arial;
+			}
+			label {
+				float: left;
+				width: 125px;
+				vertical-align: middle;
+				margin-right: 15px;
+				text-align: right;
+			}
+			button {
+				background-color: #0056b3;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+        <div id="message" style="display:none"></div>
+		<div>
+			<form method="put" action="#" id="set-translation-form">
+				<div class="form-field-row">
+					<label for="locale-selection">Locale</label>
+					<select id="locale-selection">
+						<option value="en_GB">en_GB</option>
+						<option value="de_DE">de_DE</option>
+						<option value="de_AT">de_AT</option>
+						<option value="de_CH">de_CH</option>
+					</select>
+				</div>
+				<div class="form-field-row">
+					<label for="identifier">Translation ID</label>
+					<input id="identifier" type="text" />
+				</div>
+				<div class="form-field-row">
+					<label for="text">Text</label>
+					<textarea id="text"></textarea>
+				</div>
+				<div class="form-submit-row">
+					<button id="submit-button">Set translation</button>
+				</div>
+			</form>
+		</div>
+		<script type="text/javascript" src="js/ajax.js"></script>
+		<script type="text/javascript" src="js/validator.js"></script>
+		<script type="text/javascript" src="js/message.js"></script>
+		<script type="text/javascript" src="js/app-client.js"></script>
+		<script type="text/javascript" src="js/form-controller.js"></script>
+		<script type="text/javascript" src="js/page-controller.js"></script>
+		<script type="text/javascript">
+			var pageController = new SetTranslationPageController(
+				new SetTranslationFormController(
+					document,
+					new Validator()
+				),
+				new MessageBoxController(document),
+				new AppClient(
+					new Ajax()
+				)
+			);
+			pageController.init();
+		</script>
+	</body>
+</html>

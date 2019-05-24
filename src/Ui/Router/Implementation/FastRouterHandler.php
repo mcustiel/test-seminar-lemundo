@@ -47,14 +47,12 @@ class FastRouterHandler implements RequestDispatcher
                 $response = (new Response())->withStatus(404);
                 break;
             case Dispatcher::METHOD_NOT_ALLOWED:
-                $response = new Response(
-                    sprintf(
-                        'Method not allowed. Allowed methods for %s: %s',
-                        $uri,
-                        implode(', ', $routeInfo[1])
-                    ),
-                    405
-                );
+                $response = (new Response())->withStatus(405);
+                $response->getBody()->write(sprintf(
+                    'Method not allowed. Allowed methods for %s: %s',
+                    $uri,
+                    implode(', ', $routeInfo[1])
+                ));
                 break;
             case Dispatcher::FOUND:
                 $response = $this->executeRequestInController($routeInfo, $request);

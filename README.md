@@ -80,7 +80,7 @@ This is a dummy project for the automated testing seminar at Lemundo
 
 * Having a correct state in server
 * When a request is incorrect
-* Then I see a http response witht status code 400 and containing the error message in the body
+* Then I see a http response with status code 400 and containing the error message in the body
 
 ### 6. Constraints
 

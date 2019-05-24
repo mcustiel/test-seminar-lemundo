@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "RUNNING: 'vendor/bin/phpmetrics $@'"
+docker-compose exec app ./vendor/bin/phpmetrics $@
+

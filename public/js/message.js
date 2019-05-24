@@ -1,12 +1,12 @@
 /**
  * @constructor
  */
-let MessageBoxController = function (document) {
+let MessageBoxController = function (documentElement) {
 
     let errorMessage;
 
     function construct() {
-        errorMessage = document.getElementById('message');
+        errorMessage = documentElement.getElementById('message');
     }
 
     this.showError = function (error) {

@@ -12,42 +12,28 @@ let SetTranslationFormController = (function() {
      * @param {Validator} validator
      * @constructor
      */
-    const ClassConstructor = function (document, validator) {
+    const ClassConstructor = function (documentElement, validator) {
 
         let element, submitListener = function () {}, self = this;
 
         const
             ensureValidLocale = function () {
                 let locale = self.getLocaleValue();
-                if (!validator.isString(locale)) {
-                    throw new Error('Expected string ')
-                }
-                if (!validator.isValidLocale(locale)) {
-                    throw new Error('Expected valid locale ')
-                }
+                validator.ensureIsString(locale);
+                validator.ensureIsValidLocale(locale);
             },
 
             ensureValidIdentifier = function () {
                 let identifier = self.getIdentifierValue();
-                if (!validator.isString(identifier)) {
-                    throw new Error('Expected string ')
-                }
-                if (validator.isShorterThan(MIN_LENGTH, identifier)) {
-                    throw new Error('Identifier too short')
-                }
-                if (validator.isLongerThan(MAX_LENGTH, identifier)) {
-                    throw new Error('Identifier too long')
-                }
+                validator.ensureIsString(identifier);
+                validator.ensureIsShorterOrEqualThan(MAX_LENGTH, identifier);
+                validator.ensureIsLongerOrEqualThan(MIN_LENGTH, identifier);
             },
 
             ensureValidText = function () {
                 let text = self.getTextValue();
-                if (!validator.isString(text)) {
-                    throw new Error('Expected string for text')
-                }
-                if (validator.isEmpty(text)) {
-                    throw new Error('Text is empty')
-                }
+                validator.ensureIsString(text);
+                validator.ensureIsNotEmpty(text);
             },
 
             onSubmitHandler = function (event) {
@@ -69,7 +55,7 @@ let SetTranslationFormController = (function() {
             },
 
             constructor = function () {
-                element = document.getElementById(FORM_ID);
+                element = documentElement.getElementById(FORM_ID);
                 element.onsubmit = onSubmitHandler;
             };
 
@@ -81,16 +67,16 @@ let SetTranslationFormController = (function() {
         };
 
         this.getLocaleValue = function () {
-            const select = document.getElementById(LOCALE_SELECT_ID);
+            const select = documentElement.getElementById(LOCALE_SELECT_ID);
             return select.options[select.selectedIndex].value;
         };
 
         this.getIdentifierValue = function () {
-            return document.getElementById(IDENTIFIER_INPUT_ID).value;
+            return documentElement.getElementById(IDENTIFIER_INPUT_ID).value;
         };
 
         this.getTextValue = function () {
-            return document.getElementById(TEXT_TEXTAREA_ID).value;
+            return documentElement.getElementById(TEXT_TEXTAREA_ID).value;
         };
 
         constructor();

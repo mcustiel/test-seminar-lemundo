@@ -3,24 +3,36 @@
  */
 let Validator = function () {
 
-    this.isString = function (value) {
-        return typeof value === 'string';
+    const VALID_LOCALES = ['en_GB', 'de_DE', 'de_CH', 'de_AU'];
+
+    this.ensureIsString = function (value) {
+        if (typeof value !== 'string') {
+            throw new Error('Expected string. Got ' + typeof value);
+        }
     };
 
-    this.isLongerThan = function(size, value) {
-        return value.length > size;
+    this.ensureIsShorterOrEqualThan = function(size, value) {
+        if (value.length > size) {
+            throw new Error('String is too short. Minimum length is ' + size + ' but has ' + value.length);
+        }
     };
 
-    this.isShorterThan = function(size, value) {
-        return value.length < size;
+    this.ensureIsLongerOrEqualThan = function(size, value) {
+        if (value.length < size) {
+            throw new Error('String is too long. Maximum length is ' + size + ' but has ' + value.length);
+        }
     };
 
-    this.isEmpty = function(value) {
-        return value === '';
+    this.ensureIsNotEmpty = function(value) {
+        if (value === '') {
+            throw new Error('Got empty string');
+        }
     };
 
-    this.isValidLocale = function (value) {
-        return ['en_GB', 'de_DE', 'de_CH', 'de_AU'].indexOf(value) >= 0;
+    this.ensureIsValidLocale = function (value) {
+        if (VALID_LOCALES.indexOf(value) < 0) {
+            throw new Error('Expected valid locale. Got: ' + typeof value);
+        }
     };
 
 };

@@ -1,22 +1,26 @@
 
 describe("Validator", function() {
 
-    const validator = new Validator();
+    let validator;
 
-    describe ("isString method", function () {
+    beforeEach(function() {
+        validator = new Validator();
+    });
 
-        it("validates correctly if value is a string", function() {
-            const value = 'a string';
+    describe ("ensuresString method", function () {
 
-            expect(validator.isString(value)).toBe(true);
+        it("does not throw error when value is a string", function() {
+            const value = 'I am a string';
+
+            expect(function() { validator.ensureIsString(value); }).not.toThrow();
         });
 
         it("validates correctly if value is not a string", function() {
             const value = 40;
 
-            expect(validator.isString(value)).toBe(false);
+            expect(function() { validator.ensureIsString(value); }).toThrow(new Error('Expected string. Got number'));
         });
 
-    })
+    });
 
 });

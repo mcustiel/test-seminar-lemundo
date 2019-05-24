@@ -5,14 +5,15 @@
 # If you need both WebDriver and PHPBrowser tests - create a separate suite.
 
 actor: AcceptanceTester
+class_name: WebGuy
 modules:
     enabled:
         - PhpBrowser:
             url: http://localhost:8080
         - REST:
-           depends: PhpBrowser
-           url: 'http://localhost:8080'
-        - \Helper\Acceptance
+            depends: PhpBrowser
+            url: http://localhost:8080
+        - \Helper\Acceptance:
         - Db:
             dsn: 'sqlite:../var/data/acceptance.sqlite'
             user: ~

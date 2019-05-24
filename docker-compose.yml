@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 
 services:
   web:
@@ -20,6 +20,16 @@ services:
       - .:/var/www/html
     networks:
       - testing_seminar_app_internal
+
+  selenium:
+    image: selenium/standalone-chrome
+    volumes:
+      - /dev/shm:/dev/shm
+    networks:
+      - testing_seminar_app_internal
+    environment:
+      - START_XVFB=true
+    privileged: true
 
 networks:
   testing_seminar_app_internal:

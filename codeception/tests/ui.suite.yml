@@ -1,0 +1,24 @@
+# Codeception Test Suite Configuration
+#
+# Suite for acceptance tests.
+# Perform tests in browser using the WebDriver or PhpBrowser.
+# If you need both WebDriver and PHPBrowser tests - create a separate suite.
+
+actor: AcceptanceTester
+class_name: WebGuy
+modules:
+    enabled:
+        - WebDriver:
+            url: http://app:8080
+            browser: 'chrome'
+            window_size: 1024x768
+            host: selenium
+        - \Helper\Acceptance:
+        - Db:
+            dsn: 'sqlite:../var/data/acceptance.sqlite'
+            user: ~
+            password: ~
+            dump: tests/_data/install.sql
+            cleanup: true
+            populate: true
+    step_decorators: ~        

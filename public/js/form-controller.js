@@ -14,7 +14,9 @@ let SetTranslationFormController = (function() {
      */
     const ClassConstructor = function (documentElement, validator) {
 
-        let element, submitListener = function () {}, self = this;
+        let element,
+            submitListener = function () {},
+            self = this;
 
         const
             ensureValidLocale = function () {

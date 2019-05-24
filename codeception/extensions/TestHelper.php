@@ -1,15 +1,16 @@
 <?php
+
 namespace Lemundo\Codeception\Extensions;
 
-use Codeception\Events;
 use Codeception\Event\SuiteEvent;
+use Codeception\Events;
 use Symfony\Component\Process\Process;
 
 class TestHelper extends \Codeception\Extension
 {
     public static $events = [
         Events::SUITE_BEFORE => 'suiteBefore',
-        Events::SUITE_AFTER => 'suiteAfter'
+        Events::SUITE_AFTER  => 'suiteAfter',
     ];
 
     /** @var Process */
@@ -27,7 +28,7 @@ class TestHelper extends \Codeception\Extension
             '0.0.0.0:8080',
             '-t',
             APP_PATH . '/public',
-            APP_PATH . '/codeception/router.php'
+            APP_PATH . '/codeception/router.php',
         ];
         $this->application = new Process($commandLine);
         $this->writeln($this->application->getCommandLine());

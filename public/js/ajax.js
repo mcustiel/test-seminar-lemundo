@@ -1,7 +1,7 @@
 /**
  * @constructor
  */
-var Ajax = function() {
+let Ajax = function() {
 
     const validateArguments = function (url, data, callback) {
         if (typeof url !== 'string') {

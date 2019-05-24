@@ -4,7 +4,7 @@
  * @param {AppClient} appClient
  * @constructor
  */
-var SetTranslationPageController = function(formController, messageController, appClient) {
+let SetTranslationPageController = function(formController, messageController, appClient) {
 
     const
         setTranslationResponseHandler = function (statusCode, response) {
@@ -29,7 +29,6 @@ var SetTranslationPageController = function(formController, messageController, a
             setTimeout(messageController.hideMessage, 5000);
             return false;
         };
-
 
     this.init = function() {
         formController.listenSubmit(submitHandler);

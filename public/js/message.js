@@ -1,7 +1,7 @@
 /**
  * @constructor
  */
-var MessageBoxController = function (document) {
+let MessageBoxController = function (document) {
 
     let errorMessage;
 
@@ -27,4 +27,5 @@ var MessageBoxController = function (document) {
     };
 
     construct();
+
 };

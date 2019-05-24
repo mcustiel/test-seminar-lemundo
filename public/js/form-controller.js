@@ -1,4 +1,4 @@
-var SetTranslationFormController = (function() {
+let SetTranslationFormController = (function() {
     const
         MIN_LENGTH = 3,
         MAX_LENGTH = 32,
@@ -78,18 +78,6 @@ var SetTranslationFormController = (function() {
             submitListener = callback;
         };
 
-        this.isValid = function () {
-            try {
-                ensureValidLocale();
-                ensureValidIdentifier();
-                ensureValidText();
-
-                return true;
-            } catch (e) {
-                return false;
-            }
-        };
-
         this.getLocaleValue = function () {
             const select = document.getElementById(LOCALE_SELECT_ID);
             return select.options[select.selectedIndex].value;
@@ -107,4 +95,5 @@ var SetTranslationFormController = (function() {
     };
 
     return ClassConstructor;
+
 })();

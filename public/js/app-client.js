@@ -1,4 +1,4 @@
-var AppClient = (function () {
+let AppClient = (function () {
 
     const LOCALE_TRANSLATIONS_ENDPOINT = '/locale/{locale}/translation',
         TRANSLATION_ENDPOINT = '/locale/{locale}/translation/{translation_id}';
@@ -20,4 +20,5 @@ var AppClient = (function () {
     };
 
     return ClassConstructor;
+
 })();

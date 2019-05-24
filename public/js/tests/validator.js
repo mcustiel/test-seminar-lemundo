@@ -19,4 +19,3 @@ describe("Validator", function() {
     })
 
 });
-

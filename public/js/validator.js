@@ -1,7 +1,7 @@
 /**
  * @constructor
  */
-var Validator = function () {
+let Validator = function () {
 
     this.isString = function (value) {
         return typeof value === 'string';

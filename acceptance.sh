@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 
-./docker/bin/codeception run acceptance
-
+./docker/bin/codeception run

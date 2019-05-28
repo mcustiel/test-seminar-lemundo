@@ -17,11 +17,6 @@ abstract class Controller
         $this->persistence = $persistence;
     }
 
-    /**
-     * @param mixed $data
-     *
-     * @return ResponseInterface
-     */
     public function createJsonResponse($data, int $status = 200): ResponseInterface
     {
         $response = (new Response())

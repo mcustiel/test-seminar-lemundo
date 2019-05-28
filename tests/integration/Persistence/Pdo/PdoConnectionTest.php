@@ -45,7 +45,7 @@ class PdoConnectionTest extends TestCase
         $this->connection->disconnect();
     }
 
-    public function testInsert()
+    public function testInsert(): void
     {
         $this->connection->connect();
         $this->connection->insert('test', ['id' => 1, 'value' => 'potato']);

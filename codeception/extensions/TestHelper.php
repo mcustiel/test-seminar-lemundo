@@ -16,7 +16,7 @@ class TestHelper extends \Codeception\Extension
     /** @var Process */
     private $application;
 
-    public function suiteBefore(SuiteEvent $event)
+    public function suiteBefore(SuiteEvent $event): void
     {
         $this->writeln('Starting PHP server');
         rename(APP_PATH . '/.env', APP_PATH . '/.env.backup');
@@ -36,7 +36,7 @@ class TestHelper extends \Codeception\Extension
         sleep(1);
     }
 
-    public function suiteAfter()
+    public function suiteAfter(): void
     {
         $this->writeln('Stopping PHP server');
         if (file_exists(APP_PATH . '/.env.backup')) {

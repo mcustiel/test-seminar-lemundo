@@ -8,7 +8,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class LocalesController extends Controller
 {
-    public function list(ServerRequestInterface $request, array $arguments): ResponseInterface
+    public function list(): ResponseInterface
     {
         try {
             return $this->createJsonResponse(Locale::getLocales());

@@ -2,7 +2,7 @@
 
 class ApiCest
 {
-    public function testCreatesTranslation(AcceptanceTester $I)
+    public function testCreatesTranslation(AcceptanceTester $I) : void
     {
         $I->haveHttpHeader('Content-Type', 'application/json');
         $I->sendPUT('/locale/de_DE/translation', ['text' => 'le tomato', 'id' => 'tomato']);

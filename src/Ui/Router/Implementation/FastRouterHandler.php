@@ -78,7 +78,7 @@ class FastRouterHandler implements RequestDispatcher
         );
     }
 
-    private function ensureMethodExists(RoutesEnum $route, Controller $controller)
+    private function ensureMethodExists(RoutesEnum $route, Controller $controller): void
     {
         if (!method_exists($controller, $route->getMethod())) {
             throw new RuntimeException(

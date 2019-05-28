@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 /** @covers \Lemundo\Translator\Domain\Text */
 class TextTest extends TestCase
 {
-    public function testCreatesAndRetrievesValue()
+    public function testCreatesAndRetrievesValue(): void
     {
         $text = new Text('Potato');
         Assert::assertSame('Potato', $text->asString());

@@ -1,4 +1,4 @@
 #!/bin/bash
 
 echo "RUNNING: 'vendor/bin/codecept"
-docker-compose exec app ./vendor/bin/codecept -c codeception $@
+docker-compose exec --user $(id -u):$(id -g) app ./vendor/bin/codecept -c codeception $@

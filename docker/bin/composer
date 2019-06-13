@@ -1,4 +1,4 @@
 #!/bin/bash
 
 echo "RUNNING: 'bin/composer $@'"
-docker-compose exec app composer $@
+docker-compose exec --user $(id -u):$(id -g) app composer $@

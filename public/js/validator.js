@@ -3,7 +3,7 @@
  */
 let Validator = function () {
 
-    const VALID_LOCALES = ['en_GB', 'de_DE', 'de_CH', 'de_AU'];
+    const VALID_LOCALES = ['en_GB', 'de_DE', 'de_CH', 'de_AT'];
 
     this.ensureIsString = function (value) {
         if (typeof value !== 'string') {
@@ -31,7 +31,7 @@ let Validator = function () {
 
     this.ensureIsValidLocale = function (value) {
         if (VALID_LOCALES.indexOf(value) < 0) {
-            throw new Error('Expected valid locale. Got: ' + typeof value);
+            throw new Error('Expected valid locale. Got: ' + value);
         }
     };
 
